@@ -68,8 +68,8 @@ jobs:
           IMAGE_URI=$ECR_REGISTRY/$FRONTEND_ECR_REPOSITORY:$IMAGE_TAG
           docker buildx build \
             --platform linux/amd64 \
-            --build-arg NEXT_PUBLIC_API_URL=$API_URL \
-            --build-arg NEXT_PUBLIC_BASE_URL=$BASE_URL \
+            --build-arg "NEXT_PUBLIC_API_URL=${API_URL}" \
+            --build-arg "NEXT_PUBLIC_BASE_URL=${BASE_URL}" \
             --cache-from type=gha \
             --cache-to type=gha,mode=max \
             --push \
