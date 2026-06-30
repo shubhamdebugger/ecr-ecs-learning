@@ -14,12 +14,15 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': 'error',
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', ignoreRestSiblings: true }],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-floating-promises': 'error',
     '@typescript-eslint/await-thenable': 'error',
+    '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: { arguments: false } }],
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@typescript-eslint/no-unsafe-enum-comparison': 'off',
     'no-console': 'warn',
   },
   env: {

@@ -102,7 +102,8 @@ export async function updateUrl(
 }
 
 export async function deleteUrl(id: string, userId: string): Promise<boolean> {
-  if (!mongoose.Types.ObjectId.isValid(id) || !mongoose.Types.ObjectId.isValid(userId)) return false;
+  if (!mongoose.Types.ObjectId.isValid(id) || !mongoose.Types.ObjectId.isValid(userId))
+    return false;
   const result = await Url.findOneAndDelete({ _id: id, userId }).exec();
   return result !== null;
 }
@@ -127,8 +128,5 @@ export async function urlExistsByCustomAlias(alias: string, excludeId?: string):
 
 export async function findTopPerformingUrls(userId: string, limit = 5): Promise<IUrl[]> {
   if (!mongoose.Types.ObjectId.isValid(userId)) return [];
-  return Url.find({ userId, isActive: true })
-    .sort({ clicks: -1 })
-    .limit(limit)
-    .exec();
+  return Url.find({ userId, isActive: true }).sort({ clicks: -1 }).limit(limit).exec();
 }

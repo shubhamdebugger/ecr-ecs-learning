@@ -9,10 +9,7 @@ const aliasString = z
   .string()
   .min(3, 'Alias must be at least 3 characters')
   .max(50, 'Alias must not exceed 50 characters')
-  .regex(
-    /^[a-zA-Z0-9_-]+$/,
-    'Alias can only contain letters, numbers, hyphens, and underscores',
-  )
+  .regex(/^[a-zA-Z0-9_-]+$/, 'Alias can only contain letters, numbers, hyphens, and underscores')
   .toLowerCase()
   .trim();
 
@@ -20,18 +17,11 @@ export const createUrlSchema = z.object({
   body: z.object({
     originalUrl: urlString,
     customAlias: aliasString.optional(),
-    title: z
-      .string()
-      .max(100, 'Title must not exceed 100 characters')
-      .trim()
-      .optional(),
+    title: z.string().max(100, 'Title must not exceed 100 characters').trim().optional(),
     expiresAt: z
       .string()
       .datetime({ message: 'Please provide a valid date' })
-      .refine(
-        (date) => new Date(date) > new Date(),
-        'Expiration date must be in the future',
-      )
+      .refine((date) => new Date(date) > new Date(), 'Expiration date must be in the future')
       .transform((date) => new Date(date))
       .optional(),
   }),
@@ -43,18 +33,11 @@ export const updateUrlSchema = z.object({
   }),
   body: z.object({
     originalUrl: urlString.optional(),
-    title: z
-      .string()
-      .max(100, 'Title must not exceed 100 characters')
-      .trim()
-      .optional(),
+    title: z.string().max(100, 'Title must not exceed 100 characters').trim().optional(),
     expiresAt: z
       .string()
       .datetime({ message: 'Please provide a valid date' })
-      .refine(
-        (date) => new Date(date) > new Date(),
-        'Expiration date must be in the future',
-      )
+      .refine((date) => new Date(date) > new Date(), 'Expiration date must be in the future')
       .transform((date) => new Date(date))
       .nullable()
       .optional(),

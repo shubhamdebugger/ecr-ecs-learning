@@ -1,4 +1,8 @@
-import { getAnalyticsByUrlId, getDashboardAnalytics, ClickAnalytics } from '../repositories/click.repository';
+import {
+  getAnalyticsByUrlId,
+  getDashboardAnalytics,
+  ClickAnalytics,
+} from '../repositories/click.repository';
 import { findUrlByIdAndUserId, findTopPerformingUrls } from '../repositories/url.repository';
 import type { IUrl } from '../models/url.model';
 import { AppError } from '../middleware/error.middleware';
@@ -21,10 +25,7 @@ export interface DashboardData {
   recentActivity: unknown[];
 }
 
-export const getUrlAnalytics = async (
-  urlId: string,
-  userId: string,
-): Promise<ClickAnalytics> => {
+export const getUrlAnalytics = async (urlId: string, userId: string): Promise<ClickAnalytics> => {
   const url = await findUrlByIdAndUserId(urlId, userId);
   if (!url) {
     throw new AppError(HTTP_STATUS.NOT_FOUND, ERROR_MESSAGES.URL_NOT_FOUND);
@@ -33,15 +34,9 @@ export const getUrlAnalytics = async (
   return getAnalyticsByUrlId(urlId);
 };
 
-export const getDashboard = async (
-  userId: string,
-  baseUrl: string,
-): Promise<DashboardData> => {
+export const getDashboard = async (userId: string, baseUrl: string): Promise<DashboardData> => {
   const [{ totalClicks, todayClicks, weeklyClicks, monthlyClicks, recentActivity }, topUrls] =
-    await Promise.all([
-      getDashboardAnalytics(userId),
-      findTopPerformingUrls(userId, 5),
-    ]);
+    await Promise.all([getDashboardAnalytics(userId), findTopPerformingUrls(userId, 5)]);
 
   return {
     totalClicks,

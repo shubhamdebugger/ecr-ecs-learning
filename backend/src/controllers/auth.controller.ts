@@ -74,7 +74,7 @@ export const refresh = async (req: Request, res: Response, next: NextFunction): 
   }
 };
 
-export const me = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const me = (req: Request, res: Response, next: NextFunction): void => {
   try {
     const user = (req as AuthenticatedRequest).user;
     if (!user) {

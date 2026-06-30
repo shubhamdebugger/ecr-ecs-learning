@@ -49,7 +49,10 @@ const clickSchema = new Schema<IClick>(
     timestamps: { createdAt: true, updatedAt: false },
     toJSON: {
       transform: (_doc, ret) => {
-        const { _id, __v, ...rest } = ret as unknown as { _id: mongoose.Types.ObjectId; __v: number } & Record<string, unknown>;
+        const { _id, __v, ...rest } = ret as unknown as {
+          _id: mongoose.Types.ObjectId;
+          __v: number;
+        } & Record<string, unknown>;
         return { id: _id.toString(), ...rest };
       },
     },

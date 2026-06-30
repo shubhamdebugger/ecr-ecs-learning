@@ -37,7 +37,11 @@ const userSchema = new Schema<IUser>(
     timestamps: true,
     toJSON: {
       transform: (_doc, ret) => {
-        const { _id, __v, password, ...rest } = ret as unknown as { _id: mongoose.Types.ObjectId; __v: number; password: string } & Record<string, unknown>;
+        const { _id, __v, password, ...rest } = ret as unknown as {
+          _id: mongoose.Types.ObjectId;
+          __v: number;
+          password: string;
+        } & Record<string, unknown>;
         return { id: _id.toString(), ...rest };
       },
     },

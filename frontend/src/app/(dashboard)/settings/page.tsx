@@ -4,7 +4,6 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun, Monitor } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 
 export default function SettingsPage() {

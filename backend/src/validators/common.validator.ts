@@ -25,9 +25,10 @@ export const validate = (schema: ZodSchema) => {
       return;
     }
 
-    if (result.data.body !== undefined) req.body = result.data.body as Record<string, unknown>;
-    if (result.data.query !== undefined) {
-      const validatedQuery = result.data.query as Record<string, unknown>;
+    const data = result.data as { body?: unknown; query?: unknown };
+    if (data.body !== undefined) req.body = data.body as Record<string, unknown>;
+    if (data.query !== undefined) {
+      const validatedQuery = data.query as Record<string, unknown>;
       Object.assign(req.query, validatedQuery);
     }
 

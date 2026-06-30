@@ -20,8 +20,7 @@ export const parseUserAgent = (req: Request): ClickData => {
   const geo = ip ? geoip.lookup(ip) : null;
   const country = geo?.country ?? 'unknown';
 
-  const referrer =
-    (req.headers.referer as string) || (req.headers.referrer as string) || 'direct';
+  const referrer = (req.headers.referer as string) || (req.headers.referrer as string) || 'direct';
 
   return {
     ip: ip ?? 'unknown',

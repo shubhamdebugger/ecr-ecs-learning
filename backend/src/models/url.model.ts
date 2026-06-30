@@ -30,7 +30,10 @@ const urlSchema = new Schema<IUrl>(
       lowercase: true,
       minlength: [3, 'Short code must be at least 3 characters'],
       maxlength: [50, 'Short code must not exceed 50 characters'],
-      match: [/^[a-zA-Z0-9_-]+$/, 'Short code can only contain letters, numbers, hyphens, and underscores'],
+      match: [
+        /^[a-zA-Z0-9_-]+$/,
+        'Short code can only contain letters, numbers, hyphens, and underscores',
+      ],
     },
     customAlias: {
       type: String,
@@ -39,7 +42,10 @@ const urlSchema = new Schema<IUrl>(
       sparse: true,
       minlength: [3, 'Custom alias must be at least 3 characters'],
       maxlength: [50, 'Custom alias must not exceed 50 characters'],
-      match: [/^[a-zA-Z0-9_-]+$/, 'Alias can only contain letters, numbers, hyphens, and underscores'],
+      match: [
+        /^[a-zA-Z0-9_-]+$/,
+        'Alias can only contain letters, numbers, hyphens, and underscores',
+      ],
     },
     title: {
       type: String,
@@ -68,7 +74,10 @@ const urlSchema = new Schema<IUrl>(
     timestamps: true,
     toJSON: {
       transform: (_doc, ret) => {
-        const { _id, __v, ...rest } = ret as unknown as { _id: mongoose.Types.ObjectId; __v: number } & Record<string, unknown>;
+        const { _id, __v, ...rest } = ret as unknown as {
+          _id: mongoose.Types.ObjectId;
+          __v: number;
+        } & Record<string, unknown>;
         return { id: _id.toString(), ...rest };
       },
     },

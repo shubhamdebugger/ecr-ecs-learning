@@ -5,7 +5,11 @@ import { SUCCESS_MESSAGES } from '../constants/app.constants';
 import { sendSuccess } from '../utilities/response.util';
 import { AuthenticatedRequest } from '../types/common.types';
 
-export const getProfile = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getProfile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
   try {
     const { userId } = (req as AuthenticatedRequest).user!;
     const profile = await userService.getProfile(userId);

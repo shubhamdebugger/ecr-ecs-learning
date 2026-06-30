@@ -8,12 +8,7 @@ export const updateProfileSchema = z.object({
       .max(100, 'Name must not exceed 100 characters')
       .trim()
       .optional(),
-    email: z
-      .string()
-      .email('Please provide a valid email address')
-      .toLowerCase()
-      .trim()
-      .optional(),
+    email: z.string().email('Please provide a valid email address').toLowerCase().trim().optional(),
   }),
 });
 

@@ -1,27 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { BarChart3, ExternalLink, TrendingUp } from 'lucide-react';
+import { BarChart3, ExternalLink } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/shared/EmptyState';
 import { useDashboard } from '@/hooks/useAnalytics';
 import { formatNumber, truncateUrl } from '@/lib/utils';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  Legend,
-} from 'recharts';
-
-const COLORS = ['#6366f1', '#22d3ee', '#f59e0b', '#ef4444', '#10b981', '#8b5cf6'];
 
 export default function AnalyticsPage() {
   const { data, isLoading } = useDashboard();

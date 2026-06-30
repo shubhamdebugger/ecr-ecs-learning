@@ -39,7 +39,11 @@ export const getUrls = async (req: Request, res: Response, next: NextFunction): 
   }
 };
 
-export const getUrlById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getUrlById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
   try {
     const { userId } = (req as AuthenticatedRequest).user!;
     const url = await urlService.getUrlById(req.params.id, userId);
@@ -69,7 +73,11 @@ export const deleteUrl = async (req: Request, res: Response, next: NextFunction)
   }
 };
 
-export const toggleStatus = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const toggleStatus = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
   try {
     const { userId } = (req as AuthenticatedRequest).user!;
     const { isActive } = req.body as { isActive: boolean };

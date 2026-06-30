@@ -3,7 +3,14 @@ import * as clickRepo from '../repositories/click.repository';
 import { AppError } from '../middleware/error.middleware';
 import { HTTP_STATUS } from '../constants/http.constants';
 import { ERROR_MESSAGES } from '../constants/app.constants';
-import { CreateUrlInput, UpdateUrlInput, UrlFilters, UrlResponse, PaginatedUrlResponse, ClickData } from '../types/url.types';
+import {
+  CreateUrlInput,
+  UpdateUrlInput,
+  UrlFilters,
+  UrlResponse,
+  PaginatedUrlResponse,
+  ClickData,
+} from '../types/url.types';
 import { generateUniqueShortCode } from '../utilities/shortcode.util';
 import { config } from '../config/app.config';
 import { IUrl } from '../models/url.model';
@@ -47,7 +54,10 @@ export const createUrl = async (userId: string, input: CreateUrlInput): Promise<
   return mapUrlToResponse(url);
 };
 
-export const getUrls = async (userId: string, filters: UrlFilters): Promise<PaginatedUrlResponse> => {
+export const getUrls = async (
+  userId: string,
+  filters: UrlFilters,
+): Promise<PaginatedUrlResponse> => {
   const { urls, total } = await urlRepo.findUrlsByUserId(userId, filters);
   const page = filters.page ?? 1;
   const limit = filters.limit ?? 10;

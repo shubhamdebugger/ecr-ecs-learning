@@ -2,12 +2,11 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2, User } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { useAuth } from '@/providers/AuthProvider';
 import { updateProfileSchema, changePasswordSchema, UpdateProfileInput, ChangePasswordInput } from '@/lib/validations';
 import { profileApi } from '@/lib/api';

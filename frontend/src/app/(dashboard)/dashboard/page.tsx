@@ -7,15 +7,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useDashboard } from '@/hooks/useAnalytics';
 import { useAuth } from '@/providers/AuthProvider';
 import { formatNumber, formatRelativeTime, truncateUrl } from '@/lib/utils';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
 
 export default function DashboardPage() {
   const { user } = useAuth();

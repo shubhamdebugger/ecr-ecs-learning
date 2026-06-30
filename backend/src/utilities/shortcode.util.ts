@@ -2,7 +2,10 @@ import { customAlphabet } from 'nanoid';
 import { APP_CONSTANTS } from '../constants/app.constants';
 import { urlExistsByShortCode } from '../repositories/url.repository';
 
-const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', APP_CONSTANTS.SHORT_CODE_LENGTH);
+const nanoid = customAlphabet(
+  'abcdefghijklmnopqrstuvwxyz0123456789',
+  APP_CONSTANTS.SHORT_CODE_LENGTH,
+);
 
 export const generateShortCode = (): string => {
   return nanoid();

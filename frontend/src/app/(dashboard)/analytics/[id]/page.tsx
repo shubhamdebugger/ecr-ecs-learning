@@ -1,9 +1,9 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import { ArrowLeft, MousePointerClick, Globe, Monitor, Smartphone } from 'lucide-react';
+import { ArrowLeft, MousePointerClick, Monitor, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { StatCard } from '@/components/shared/StatCard';
 import { useUrlAnalytics } from '@/hooks/useAnalytics';
@@ -19,7 +19,6 @@ import {
   PieChart,
   Pie,
   Cell,
-  Legend,
 } from 'recharts';
 
 const COLORS = ['#6366f1', '#22d3ee', '#f59e0b', '#ef4444', '#10b981', '#8b5cf6', '#ec4899'];

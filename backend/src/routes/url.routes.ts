@@ -1,7 +1,20 @@
 import { Router } from 'express';
-import { createUrl, getUrls, getUrlById, updateUrl, deleteUrl, toggleStatus } from '../controllers/url.controller';
+import {
+  createUrl,
+  getUrls,
+  getUrlById,
+  updateUrl,
+  deleteUrl,
+  toggleStatus,
+} from '../controllers/url.controller';
 import { validate } from '../validators/common.validator';
-import { createUrlSchema, updateUrlSchema, urlFiltersSchema, updateStatusSchema, urlParamsSchema } from '../validators/url.validator';
+import {
+  createUrlSchema,
+  updateUrlSchema,
+  urlFiltersSchema,
+  updateStatusSchema,
+  urlParamsSchema,
+} from '../validators/url.validator';
 import { authenticate } from '../middleware/auth.middleware';
 
 const router = Router();
