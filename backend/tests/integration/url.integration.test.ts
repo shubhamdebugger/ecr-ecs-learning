@@ -24,8 +24,8 @@ afterAll(async () => {
 });
 
 afterEach(async () => {
-  const { Url, Click } = mongoose.connection.collections;
-  await Promise.all([Url?.deleteMany({}), Click?.deleteMany({})]);
+  const collections = mongoose.connection.collections;
+  await Promise.all(Object.values(collections).map((c) => c.deleteMany({})));
 });
 
 describe('URL API Integration Tests', () => {
