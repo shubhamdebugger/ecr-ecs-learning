@@ -1,0 +1,24 @@
+version: '3.9'
+
+# Development override — mounts source code for hot reload
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: url-shortener-mongodb-dev
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data_dev:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: url_shortener
+    networks:
+      - app-network-dev
+
+volumes:
+  mongodb_data_dev:
+
+networks:
+  app-network-dev:
+    driver: bridge
