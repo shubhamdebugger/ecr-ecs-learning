@@ -3,9 +3,16 @@ import { IUrl, Url } from '../models/url.model';
 import { UrlFilters } from '../types/url.types';
 import { APP_CONSTANTS } from '../constants/app.constants';
 
-export async function createUrl(
-  data: Omit<IUrl, '_id' | 'clicks' | 'isActive' | 'createdAt' | 'updatedAt'>,
-): Promise<IUrl> {
+type CreateUrlData = {
+  originalUrl: string;
+  shortCode: string;
+  customAlias?: string;
+  title?: string;
+  expiresAt?: Date;
+  userId: mongoose.Types.ObjectId | string;
+};
+
+export async function createUrl(data: CreateUrlData): Promise<IUrl> {
   const url = new Url(data);
   return url.save();
 }
@@ -74,10 +81,17 @@ export async function findUrlsByUserId(
   return { urls, total };
 }
 
+type UpdateUrlData = {
+  originalUrl?: string;
+  title?: string;
+  expiresAt?: Date | null;
+  isActive?: boolean;
+};
+
 export async function updateUrl(
   id: string,
   userId: string,
-  data: Partial<IUrl>,
+  data: UpdateUrlData,
 ): Promise<IUrl | null> {
   if (!mongoose.Types.ObjectId.isValid(id) || !mongoose.Types.ObjectId.isValid(userId)) return null;
   return Url.findOneAndUpdate(

@@ -41,7 +41,7 @@ export const createUrl = async (userId: string, input: CreateUrlInput): Promise<
     customAlias: input.customAlias,
     title: input.title,
     expiresAt: input.expiresAt,
-    userId: userId as unknown as import('mongoose').Types.ObjectId,
+    userId,
   });
 
   return mapUrlToResponse(url);

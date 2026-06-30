@@ -24,7 +24,7 @@ export const getUrls = async (req: Request, res: Response, next: NextFunction): 
       isActive: q.isActive !== undefined ? q.isActive === 'true' : undefined,
       page: Number(q.page) || 1,
       limit: Number(q.limit) || 10,
-      sortBy: q.sortBy,
+      sortBy: q.sortBy as 'createdAt' | 'clicks' | 'title' | undefined,
       sortOrder: q.sortOrder as 'asc' | 'desc' | undefined,
     });
 

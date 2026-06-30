@@ -68,10 +68,8 @@ const urlSchema = new Schema<IUrl>(
     timestamps: true,
     toJSON: {
       transform: (_doc, ret) => {
-        ret.id = (ret._id as mongoose.Types.ObjectId).toString();
-        delete ret._id;
-        delete ret.__v;
-        return ret;
+        const { _id, __v, ...rest } = ret as unknown as { _id: mongoose.Types.ObjectId; __v: number } & Record<string, unknown>;
+        return { id: _id.toString(), ...rest };
       },
     },
   },
